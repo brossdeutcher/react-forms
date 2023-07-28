@@ -14,14 +14,25 @@ const SignUpForm = () => {
     setPassword(e.target.value);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, password);
+    try {
+      const response = await fetch('https://fsa-jwt-practice.herokuapp.com/signup', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({username, password})
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
     <>
       <h2>Sign Up</h2>
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>Username: <input value={username} onChange={changeUsername} /></label>
         <label>Password: <input value={password} onChange={changePassword} /></label>
