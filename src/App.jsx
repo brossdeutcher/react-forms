@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello</h1>
+      <h1>React Sign Forms</h1>
       <SignUpForm token={token} setToken={setToken} />
       <Authenticate token={token} />
     </>

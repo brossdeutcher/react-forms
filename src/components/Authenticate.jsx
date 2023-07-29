@@ -8,7 +8,6 @@ const Authenticate = ({token}) => {
   const [username, setUsername] = useState(null);
 
   const authToken = async () => {
-    console.log(token);
     
     try {
       const response = await fetch(`https://fsa-jwt-practice.herokuapp.com/authenticate`, {
@@ -18,14 +17,14 @@ const Authenticate = ({token}) => {
           "Authorization": `Bearer ${token}` 
         }
       });
-      // throw Error(`OH SHIIIIT`);
       const result = await response.json();
       setUsername(result.data.username);
       setSuccessMsg(result.message);
-  } catch (err) {
-    console.error(`My Error Msg: ${err}`);
-    setError(err);
-  }
+      setError(null); // error message removed if authentication completes without errors
+    } catch (err) {
+      console.error(`Error in Authenticate: ${err}`);
+      setError(err.message);
+    }
   }
 
   return (

@@ -24,7 +24,9 @@ const SignUpForm = ({setToken}) => {
       });
       const result = await response.json();
       setToken(result.token);
+      setError(null);
     } catch (err) {
+      console.error(`Error in SignUpForm: ${err}`);
       setError(err.message);
     }
   }
