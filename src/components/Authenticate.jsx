@@ -17,7 +17,7 @@ const Authenticate = ({token}) => {
           "Authorization": `Bearer ${token}` 
         }
       });
-      throw Error(`OH SHIIIIT`);
+      // throw Error(`OH SHIIIIT`);
       const result = await response.json();
       console.log(result);
       setSuccessMsg(result.message);
