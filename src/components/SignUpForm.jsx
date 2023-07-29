@@ -16,18 +16,24 @@ const SignUpForm = ({setToken}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('https://fsa-jwt-practice.herokuapp.com/signup', {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({username, password})
-      });
-      const result = await response.json();
-      setToken(result.token);
-      setError(null);
-    } catch (err) {
-      console.error(`Error in SignUpForm: ${err}`);
-      setError(err.message);
+
+    if (username.length < 8) {
+      setError('Username must be at least 8 characters');
+    } else {
+
+      try {
+        const response = await fetch('https://fsa-jwt-practice.herokuapp.com/signup', {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({username, password})
+        });
+        const result = await response.json();
+        setToken(result.token);
+        setError(null);
+      } catch (err) {
+        console.error(`Error in SignUpForm: ${err}`);
+        setError(err.message);
+      }
     }
   }
 
