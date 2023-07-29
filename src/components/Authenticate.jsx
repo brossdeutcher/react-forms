@@ -1,6 +1,6 @@
 
 
-const Authenticate = () => {
+const Authenticate = ({token}) => {
   return (
     <>
       <h2>Authenticate</h2>
