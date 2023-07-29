@@ -40,7 +40,7 @@ const SignUpForm = ({setToken}) => {
   return (
     <>
       <h2>Sign Up</h2>
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>Username: <input value={username} onChange={changeUsername} /></label>
         <label>Password: <input value={password} onChange={changePassword} /></label>

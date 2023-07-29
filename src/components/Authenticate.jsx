@@ -32,7 +32,7 @@ const Authenticate = ({token}) => {
       <h2>Authenticate</h2>
       {successMsg && <p>Great Success!! {successMsg}</p>}
       {username && <p>Signed in as: {username}</p>}
-      {error && <p>ERROR: {error}</p>}
+      {error && <p className="error">ERROR: {error}</p>}
       <button onClick={authToken}>Authenticate Token</button>
     </>
   )
